@@ -49,9 +49,7 @@ namespace cppcoro
 				// were crashing under x86 optimised builds.
 				template<typename PROMISE>
 				CPPCORO_NOINLINE
-				void await_suspend(std::experimental::coroutine_handle<PROMISE> coroutine)
-				{
-					task_promise_base& promise = coroutine.promise();
+			void await_suspend(std::experimental::coroutine_handle<PROMISE> coroutine) noexcept
 
 					// Use 'release' memory semantics in case we finish before the
 					// awaiter can suspend so that the awaiting thread sees our
